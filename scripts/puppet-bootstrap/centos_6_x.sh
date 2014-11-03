@@ -24,6 +24,6 @@ rpm -i ${repo_path} >/dev/null
 
 # Install Puppet...
 echo "Installing puppet"
-yum install -y puppet > /dev/null
+yum install -y puppet-3.6.1-1.el6 > /dev/null
 
 echo "Puppet installed!"

@@ -41,7 +41,8 @@
     "scripts": [
       "scripts/vagrant.sh",
       "scripts/puppet-bootstrap/centos_5_x.sh",
-      "scripts/create_first_puppet.sh",
+      "scripts/create_eth1.sh",
+      "scripts/create_eth2.sh",
       "scripts/vboxguest.sh",
       "scripts/compact.sh"
     ]

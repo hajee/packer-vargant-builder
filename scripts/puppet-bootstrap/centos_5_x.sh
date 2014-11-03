@@ -11,10 +11,10 @@ fi
 
 # Install puppet labs repo
 echo "Configuring PuppetLabs repository"
-rpm -i http://yum.puppetlabs.com/el/5/products/x86_64/puppetlabs-release-5-10.noarch.rpm
+rpm -i --nosignature http://yum.puppetlabs.com/el/5/products/x86_64/puppetlabs-release-5-10.noarch.rpm
 
 # Install Puppet...
 echo "Installing Puppet"
-rpm -i puppet > /dev/null
+yum install -y puppet-3.4.3-1.el5
 
 echo "Puppet installed!"
