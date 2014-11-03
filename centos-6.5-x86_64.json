@@ -1,5 +1,32 @@
 {
-  "builders": [{
+  "builders": [
+    {
+    "type": "vmware-iso",
+    "headless": false,
+
+    "guest_os_type": "redhat",
+    "disk_size": 40960,
+
+    "iso_url": "http://mirrors.kernel.org/centos/6.5/isos/x86_64/CentOS-6.5-x86_64-minimal.iso",
+    "iso_checksum": "f21a71e8e31df73297bdd1ccd4a64a36831284bd",
+    "iso_checksum_type": "sha1",
+
+    "boot_command": [
+      "<tab> text ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/centos-6.5-x86_64/ks.cfg<enter><wait>"
+    ],
+    "boot_wait": "12s",
+
+    "http_directory": "http",
+
+    "ssh_username": "vagrant",
+    "ssh_password": "vagrant",
+    "ssh_port": 22,
+    "ssh_wait_timeout": "10000s",
+
+    "shutdown_command": "echo 'vagrant'|sudo -S /sbin/halt -h -p"
+    }
+    ,
+    {
     "type": "virtualbox-iso",
     "virtualbox_version_file": ".vbox_version",
     "headless": false,
@@ -30,7 +57,8 @@
     ],
 
     "shutdown_command": "echo 'vagrant'|sudo -S /sbin/halt -h -p"
-  }],
+    }
+  ],
   "post-processors": [{
     "output": "build/centos-6.5-x86_64.box",
     "type": "vagrant"
@@ -41,7 +69,6 @@
     "scripts": [
       "scripts/vagrant.sh",
       "scripts/puppet-bootstrap/centos_6_x.sh",
-      "scripts/vboxguest.sh",
       "scripts/compact.sh"
     ]
   }]
